@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>คู่มือ GMMK Pro — teamvia</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Leelawadee UI", "TH Sarabun New", "Segoe UI", sans-serif; color: #4a3f55; background: #fff; margin: 0; font-size: 13.5px; line-height: 1.65; }
+  .cover { text-align: center; background: linear-gradient(135deg, #ffe9f2, #fff6e9 60%, #e9f4ff); border-radius: 24px; padding: 44px 20px 34px; margin-bottom: 22px; border: 2px dashed #f3a8c8; }
+  .cover .kbd { font-size: 52px; }
+  .cover h1 { margin: 8px 0 2px; font-size: 30px; color: #c2437f; }
+  .cover p { margin: 4px 0; color: #8a7396; }
+  .badge { display: inline-block; background: #c2437f; color: #fff; border-radius: 999px; padding: 3px 14px; font-size: 12px; margin: 3px; }
+  h2 { color: #c2437f; font-size: 19px; margin: 26px 0 10px; padding-bottom: 4px; border-bottom: 2px dotted #f3a8c8; page-break-after: avoid; }
+  .card { background: #fff7fb; border: 1.5px solid #f6c9de; border-radius: 14px; padding: 12px 16px; margin: 10px 0; page-break-inside: avoid; }
+  .card.blue { background: #f2f8ff; border-color: #b9d9f7; }
+  .card.green { background: #f2fbf3; border-color: #b5e3bd; }
+  .card.yellow { background: #fffbef; border-color: #eed98a; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+  th { background: #fbd9e8; color: #a02c66; padding: 7px 10px; text-align: left; }
+  td { padding: 6px 10px; border-bottom: 1px solid #f6e3ee; }
+  tr:last-child td { border-bottom: none; }
+  .tip { background: #fff3d6; border-left: 5px solid #f2b90d; border-radius: 0 12px 12px 0; padding: 10px 14px; margin: 12px 0; page-break-inside: avoid; }
+  .warn { background: #ffe9e9; border-left: 5px solid #e5655b; border-radius: 0 12px 12px 0; padding: 10px 14px; margin: 12px 0; page-break-inside: avoid; }
+  kbd { background: #4a3f55; color: #fff; border-radius: 6px; padding: 1px 8px; font-family: inherit; font-size: 12.5px; white-space: nowrap; }
+  .footer { text-align: center; color: #b79ec4; font-size: 12px; margin-top: 26px; }
+  .steps li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kbd">⌨️🐾</div>
+  <h1>คู่มือ GMMK Pro — teamvia</h1>
+  <p>QMK ล่าสุด + VIA + ปุ่มหมุนตั้งได้ + ไฟบอกสถานะ</p>
+  <div><span class="badge">ANSI rev1</span><span class="badge">VIA ready</span><span class="badge">Caps Word</span><span class="badge">Mouse layer</span></div>
+</div>
+
+<h2>🌟 ของที่ติดมากับ firmware นี้</h2>
+<div class="card">
+<table>
+<tr><th>ฟังก์ชัน</th><th>ใช้ยังไง</th></tr>
+<tr><td>🔊 ปุ่มหมุนปรับเสียง</td><td>หมุนขวา = ดังขึ้น / หมุนซ้าย = เบาลง / กด = ปิดเสียง</td></tr>
+<tr><td>🎨 ปุ่มหมุนเปลี่ยนสีไฟ</td><td>กด <kbd>FN</kbd> ค้าง + หมุน</td></tr>
+<tr><td>🔴 ไฟเตือน Caps Lock</td><td>กด Caps แล้วไฟแดงทั้งบอร์ด กดอีกทีหาย</td></tr>
+<tr><td>💡 ไฟบอก layer</td><td>แถบไฟข้างบอร์ด: ชั้น FN = น้ำเงิน / ชั้นเมาส์ = เขียว</td></tr>
+<tr><td>🔠 Caps Word</td><td>แตะ <kbd>Shift</kbd> 2 ที พิมพ์ตัวใหญ่ยาวๆ แล้วหลุดเอง</td></tr>
+<tr><td>🖱️ ชั้นเมาส์</td><td><kbd>FN</kbd> + <kbd>PScr</kbd> สลับเปิด/ปิด ใช้ปุ่ม WASD ขยับเมาส์</td></tr>
+<tr><td>⚙️ เข้าโหมดแฟลช</td><td><kbd>FN</kbd> + <kbd>\</kbd> (ไม่ต้องแกะเคส)</td></tr>
+<tr><td>🌐 VIA</td><td>เปิด usevia.app เปลี่ยนปุ่มได้เลยไม่ต้องแฟลชใหม่</td></tr>
+</table>
+</div>
+
+<h2>🗺️ แผนผังปุ่ม</h2>
+<div class="card blue">
+<b>ชั้น 0 (ปกติ)</b> — ANSI มาตรฐานทุกปุ่ม ปุ่ม <kbd>MO(1)</kbd> แถวล่าง = กดค้างเป็น FN
+</div>
+<div class="card">
+<b>ชั้น FN</b> (กด MO(1) ค้าง) — ต่างจากชั้น 0 แค่ปุ่มนี้:
+<table>
+<tr><th>ปุ่ม</th><th>หน้าที่</th></tr>
+<tr><td>F1–F6</td><td>เปิด My Computer / เบราว์เซอร์ / เครื่องคิดเลข / เพลง</td></tr>
+<tr><td>F9–F12</td><td>ปิดเสียง / ลดเสียง / เพิ่มเสียง</td></tr>
+<tr><td>PScr</td><td>เปิด–ปิดชั้นเมาส์</td></tr>
+<tr><td>\</td><td>เข้าโหมดแฟลช</td></tr>
+<tr><td>N</td><td>สลับ 6KRO / NKRO</td></tr>
+<tr><td>ปุ่มไฟ</td><td>เปิด/ปิดไฟ • สว่าง • เฉดสี • เอฟเฟกต์</td></tr>
+<tr><td>ปุ่มหมุน</td><td>หมุน = เปลี่ยนสีไฟ</td></tr>
+</table>
+</div>
+<div class="card green">
+<b>ชั้นเมาส์</b> (FN + PScr สลับเปิด/ปิด — แถบไฟข้างเป็นสีเขียว)
+<table>
+<tr><th>ปุ่ม</th><th>หน้าที่</th></tr>
+<tr><td>Q / E</td><td>คลิกซ้าย / คลิกขวา</td></tr>
+<tr><td>W A S D</td><td>ขยับเมาส์ ขึ้น / ซ้าย / ลง / ขวา</td></tr>
+<tr><td>Z X C</td><td>สกรอลล์ ลง / ขึ้น / ขวา</td></tr>
+</table>
+</div>
+
+<h2>🔠 Caps Word</h2>
+<div class="card yellow">แตะ <kbd>Shift</kbd> 2 ที แล้วพิมพ์ได้เลย <b>LIKE_THIS</b> พอเคาะ Space หรือปุ่มอื่นที่ไม่ใช่ตัวอักษร มันหลุดเอง ไม่ต้องกด Caps ให้เมื่อย</div>
+
+<h2>🌐 ตั้งปุ่มเองด้วย VIA</h2>
+<ol class="steps">
+<li>เปิด <b>usevia.app</b> เสียบคีย์บอร์ด กด Connect</li>
+<li>คลิกปุ่มที่อยากเปลี่ยน → เลือกปุ่มใหม่ → เสร็จทันที ไม่ต้องแฟลช</li>
+<li>แท็บ Lighting ปรับไฟ แท็บ Macros อัดข้อความลัดได้ ปุ่มหมุนก็เปลี่ยนได้</li>
+</ol>
+<div class="tip">💡 VIA เปลี่ยนได้แค่ “ปุ่มคืออะไร” ส่วนพฤติกรรมพิเศษ (caps แดง, สีไฟบอก layer, Caps Word) อยู่ใน firmware ต้องแก้โค้ด + แฟลชใหม่</div>
+
+<h2>⚙️ แฟลช firmware ใหม่</h2>
+<ol class="steps">
+<li>เปิด <b>tools\qmk_toolbox.exe</b> → Open → เลือกไฟล์ .bin</li>
+<li>เข้าโหมดแฟลช: กด <kbd>FN</kbd> + <kbd>\</kbd> หรือถอดสาย → กด <kbd>Esc</kbd> ค้าง → เสียบสาย → ปล่อย</li>
+<li>กด Flash → สำเร็จแล้วถอดเสียบสายใหม่</li>
+</ol>
+<div class="warn">⚠️ <b>หลังแฟลชทุกครั้ง:</b> ถอดสาย กด Esc ค้าง เสียบสาย ปล่อย (ล้างค่าจำเก่า ไม่งั้นปุ่มใหม่อาจไม่ทำงาน)</div>
+
+<h2>🩺 ปัญหาที่เจอบ่อย</h2>
+<div class="card">
+<table>
+<tr><th>อาการ</th><th>แก้</th></tr>
+<tr><td>Toolbox ขึ้น NO DRIVER</td><td>กด Install Drivers มุมขวาบน แล้ว Flash ใหม่</td></tr>
+<tr><td>แฟลชแล้วปุ่มใหม่ไม่ทำงาน</td><td>ล้างค่าจำเก่า (ข้อ 4 ด้านบน)</td></tr>
+<tr><td>VIA หาบอร์ดไม่เจอ</td><td>ใช้ Chrome/Edge เสียบสายตรงไม่ผ่าน hub</td></tr>
+<tr><td>หมุนปุ่มแล้วทิศกลับกัน</td><td>แก้ใน VIA (Encoder)</td></tr>
+<tr><td>ไฟแดงค้าง</td><td>กด Caps อีกที (caps ติดอยู่)</td></tr>
+</table>
+</div>
+
+<div class="footer">ทำด้วยใจ โดยน้องเมลโลว์ 🐾 source: teamvia-rev1-ansi/</div>
+
+</body>
+</html>
