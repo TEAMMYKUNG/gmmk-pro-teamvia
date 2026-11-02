@@ -27,6 +27,15 @@ QMK ล่าสุด + VIA + ปุ่มหมุนตั้งได้ + �
 
 ดับเบิลคลิก `build.bat` (ครั้งแรกโหลด QMK ~10 นาที) ได้ไฟล์ใน `firmware/`
 
+## เอา source ไปใส่ QMK ของตัวเอง
+
+`keymap/` คือทั้งหมดที่เราเขียน (4 ไฟล์) เอาไปวางใน QMK ล่าสุดได้เลย:
+
+1. โคลน QMK + submodule ตามปกติ
+2. ก็อปทั้งโฟลเดอร์ `keymap/` ไปวางที่ `keyboards/gmmk/pro/rev1/ansi/keymaps/teamvia/`
+3. PaletteFx ต้องมีโมดูลก่อน: `git clone https://github.com/getreuer/qmk-modules.git modules/getreuer`
+4. `qmk compile -kb gmmk/pro/rev1/ansi -km teamvia` แล้วแก้ต่อได้ตามใจ
+
 ## Flash
 
 1. เปิด QMK Toolbox → Open → เลือก `.bin` → MCU: STM32
