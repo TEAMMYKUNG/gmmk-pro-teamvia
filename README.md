@@ -1,51 +1,65 @@
-# GMMK Pro ANSI — teamvia firmware
+# ⌨️ GMMK Pro ANSI — teamvia firmware
 
-QMK ล่าสุด + VIA + ปุ่มหมุนตั้งได้ + ไฟบอกสถานะ + Caps Word + ชั้นเมาส์ + PaletteFx
+![rev1](https://img.shields.io/badge/rev1-STM32F303-blue) ![VIA](https://img.shields.io/badge/VIA-ready-green) ![QMK](https://img.shields.io/badge/QMK-latest-orange) ![license](https://img.shields.io/badge/license-GPL--2.0-lightgrey)
 
-## ของในนี้
+A custom VIA keymap for the Glorious GMMK Pro (ANSI, rev1) — knob, Caps Word, mouse layer, layer LEDs, extra effects + PaletteFx.
+เฟิร์มแวร์ VIA สำหรับ GMMK Pro ANSI rev1 — ปุ่มหมุน, Caps Word, ชั้นเมาส์, ไฟบอกสถานะ, เอฟเฟกต์เพิ่ม
 
-| ไฟล์ | คืออะไร |
+---
+
+## ✨ Features | ฟังก์ชัน
+
+| EN | TH |
 |---|---|
-| `keymap/` | source ทั้งหมดของเรา (`keymap.c`, `rules.mk`, `config.h`, `keymap.json`) — แค่นี้คือ custom ทั้งหมด |
-| `firmware/*.bin` | firmware พร้อมแฟลช |
-| `build.bat` | สั่ง build เองได้ในขั้นเดียว (ต้องมี git + Docker Desktop) |
-| `MANUAL-cute.pdf` | คู่มือฉบับน่ารัก |
-| `RESEARCH.md` / `FUNCTIONS.md` | โน้ตรีเสิร์ชว่าทำไมทำแบบนี้ |
+| 🔊 Knob: turn = volume, press = mute | หมุน = เสียง กด = ปิดเสียง |
+| 🎨 FN + knob = change light color | FN + หมุน = เปลี่ยนสีไฟ |
+| ⌨️ `~` key: tap = Esc, hold = `~` | แตะ = Esc กดค้าง = `~` |
+| 🔴 Caps Lock = whole board turns red | Caps แล้วไฟแดงทั้งบอร์ด |
+| 💡 Side LEDs show layer (FN = blue, mouse = green) | แถบข้างบอก layer |
+| 🔠 Double-tap Shift = Caps Word | แตะ Shift 2 ที พิมพ์ตัวใหญ่ยาวๆ |
+| 🖱️ FN + PScr = mouse layer (WASD move, Q/E click) | ชั้นเมาส์ กันเมาส์ตาย |
+| ⚙️ FN + \ = bootloader (no disassembly) | เข้าโหมดแฟลชไม่ต้องแกะเคส |
+| 🌈 Extra effects + PaletteFx (16 palettes × 6 effects) | เอฟเฟกต์เพิ่มเพียบ |
+| 🌐 VIA support — remap in browser, no reflash | เปลี่ยนปุ่มผ่านเว็บได้เลย |
 
-## ฟังก์ชัน
+## 📁 What's inside | ของในนี้
 
-- หมุน = เสียง, กด = ปิดเสียง / FN+หมุน = เปลี่ยนสีไฟ
-- ปุ่ม `~` แตะ = Esc กดค้าง = `~` (Grave-Esc)
-- Caps แดงทั้งบอร์ด / แถบข้างบอก layer (FN = น้ำเงิน, เมาส์ = เขียว)
-- แตะ Shift 2 ที = Caps Word
-- FN + PScr = ชั้นเมาส์ (WASD ขยับ, Q/E คลิก, ZXC สกรอลล์)
-- FN + \ = เข้า bootloader / FN + N = สลับ 6KRO/NKRO
-- เอฟเฟกต์ไฟเพิ่ม + PaletteFx (16 ชุดสี × 6 ลาย)
-- VIA (usevia.app) เปลี่ยนปุ่มได้เลยไม่ต้องแฟลช
+| Path | EN | TH |
+|---|---|---|
+| `keymap/` | All our source (4 files) — drop into any fresh QMK | source ทั้งหมดของเรา 4 ไฟล์ |
+| `firmware/*.bin` | Ready-to-flash firmware | ไฟล์พร้อมแฟลช |
+| `build.bat` | One-step build (needs git + Docker Desktop) | สั่ง build ขั้นเดียว |
+| `MANUAL-cute.pdf` | Illustrated manual 🇹🇭 | คู่มือฉบับน่ารัก |
 
-## Build เอง
+## 🔨 Build
 
-ดับเบิลคลิก `build.bat` (ครั้งแรกโหลด QMK ~10 นาที) ได้ไฟล์ใน `firmware/`
+**Easy way | วิธีง่าย:** double-click `build.bat` (first run downloads QMK, ~10 min) → firmware appears in `firmware/`
 
-## เอา source ไปใส่ QMK ของตัวเอง
+**Bring your own QMK | ใส่ QMK ของตัวเอง:**
 
-`keymap/` คือทั้งหมดที่เราเขียน (4 ไฟล์) เอาไปวางใน QMK ล่าสุดได้เลย:
+1. Clone QMK + submodules as usual
+2. Copy folder `keymap/` → `keyboards/gmmk/pro/rev1/ansi/keymaps/teamvia/`
+3. For PaletteFx: `git clone https://github.com/getreuer/qmk-modules.git modules/getreuer`
+4. `qmk compile -kb gmmk/pro/rev1/ansi -km teamvia` — then hack away!
 
-1. โคลน QMK + submodule ตามปกติ
-2. ก็อปทั้งโฟลเดอร์ `keymap/` ไปวางที่ `keyboards/gmmk/pro/rev1/ansi/keymaps/teamvia/`
-3. PaletteFx ต้องมีโมดูลก่อน: `git clone https://github.com/getreuer/qmk-modules.git modules/getreuer`
-4. `qmk compile -kb gmmk/pro/rev1/ansi -km teamvia` แล้วแก้ต่อได้ตามใจ
+## ⚡ Flash | แฟลช
 
-## Flash
+1. Open QMK Toolbox → Open → pick the `.bin` → MCU: **STM32**
+2. Enter bootloader: <kbd>FN</kbd> + <kbd>\</kbd> — or unplug → hold <kbd>Esc</kbd> → plug in → release
+3. Flash → replug the cable
+4. ⚠️ **After every flash:** unplug → hold <kbd>Esc</kbd> → plug in → release (clears old settings, otherwise new keys may not work)
+   ⚠️ **หลังแฟลชทุกครั้งต้องล้างค่าจำเก่า** ไม่งั้นปุ่มใหม่อาจไม่ทำงาน
 
-1. เปิด QMK Toolbox → Open → เลือก `.bin` → MCU: STM32
-2. เข้า bootloader: FN + \ หรือถอดสาย → กด Esc ค้าง → เสียบสาย → ปล่อย
-3. Flash → สำเร็จแล้ว **ล้างค่าจำเก่า: ถอดสาย กด Esc ค้าง เสียบสาย ปล่อย**
+> ⛔ **rev1 only** (STM32F303). Do NOT flash on rev2 — different bootloader, will brick.
+> ⛔ **ใช้กับ rev1 เท่านั้น** ห้ามแฟลชลง rev2
 
-ใช้ได้เฉพาะ **rev1** (STM32F303) ห้ามแฟลชลง rev2
+## 🌐 VIA
 
-## เครดิต
+Open [usevia.app](https://usevia.app), connect, remap anything — no reflash needed. Custom behaviors (caps LED, layer LEDs, Caps Word) live in firmware.
+เปิด usevia.app เสียบแล้วตั้งปุ่มได้เลย
 
-- [QMK Firmware](https://github.com/qmk/qmk_firmware) (GPL-2.0-or-later — keymap นี้เช่นกัน)
-- [PaletteFx](https://getreuer.info/posts/keyboards/palettefx) โดย getreuer
-- บอร์ด [Glorious GMMK Pro](https://www.pcgamingrace.com/)
+## 🙏 Credits
+
+- [QMK Firmware](https://github.com/qmk/qmk_firmware) (GPL-2.0-or-later — this keymap too)
+- [PaletteFx](https://getreuer.info/posts/keyboards/palettefx) by getreuer
+- Board: [Glorious GMMK Pro](https://www.pcgamingrace.com/)
